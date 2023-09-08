@@ -1,6 +1,6 @@
 const fs = require('fs');
 const readlineSync = require('readline-sync');	
-
+var color = require('colors');
 
 var data = fs.readFileSync('todos.json');		
 let datas = JSON.parse(data);
@@ -13,7 +13,7 @@ exec('node read.js', (error, stdout, stderr) => {
 	}
 	console.log(stdout);
 	
-	var updateItem = readlineSync.question('輸入要「更新」的待辦事項「編號」:');
+	var updateItem = readlineSync.question(color.yellow('輸入要「更新」的待辦事項「編號」:'));
 	console.log('\n更新編號為:' + updateItem);
 
 	for(let i=0; i < datas.length ; i++){
@@ -24,7 +24,7 @@ exec('node read.js', (error, stdout, stderr) => {
 		fs.writeFileSync('todos.json', JSON.stringify(datas));
 	}
 	
-	console.log('\n代辦清單:\n');
+	console.log(color.green.underline('\n代辦清單:\n'));
 	for(let i=0; i < datas.length ; i++){
 		console.log( '#' + i + ' ' + datas[i].title + '\n');
 	}

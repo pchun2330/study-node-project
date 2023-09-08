@@ -1,9 +1,10 @@
 var fs = require('fs');
+var color = require('colors');
 
 //Sync is synchronize
 var data = fs.readFileSync('todos.json');
 
-console.log('\n待辦清單:\n');
+console.log(color.green.underline('\n待辦清單:\n'));
 let datas = JSON.parse(data);
 
 for(let i=0; i < datas.length ; i++){

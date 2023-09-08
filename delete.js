@@ -1,6 +1,6 @@
 const fs = require('fs');
 const readlineSync = require('readline-sync');	
-
+var color = require('colors');
 
 var data = fs.readFileSync('todos.json');		
 let datas = JSON.parse(data);
@@ -13,10 +13,10 @@ exec('node read.js', (error, stdout, stderr) => {
   }
   console.log(stdout);
 	
-	var deleteItem = readlineSync.question('輸入要刪除的待辦事項「編號」:');
+	var deleteItem = readlineSync.question(color.red('輸入要刪除的待辦事項「編號」:'));
 	console.log('\n刪除事項:' + deleteItem);
 
-	console.log('\n-----------------------\n代辦清單:\n');
+	console.log('\n'+color.green.underline('代辦清單:\n'));
 	for(let i=0; i < datas.length ; i++){
 		if(deleteItem == i){
 			datas.splice(deleteItem,1);
