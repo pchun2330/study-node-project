@@ -10,6 +10,5 @@ let datas = JSON.parse(data);
 for(let i=0; i < datas.length ; i++){
 	console.log( '#' + i + ' ' + datas[i].title + '\n');
 }
-
 process.exit(0);
 
